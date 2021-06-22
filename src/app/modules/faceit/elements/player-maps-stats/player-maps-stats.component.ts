@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FaceitService} from "../../../../shared/services/faceit.service";
 import {MapStats} from "../../../../shared/interfaces/player/player-stats.interface";
 
 

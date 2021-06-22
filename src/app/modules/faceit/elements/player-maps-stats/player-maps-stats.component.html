@@ -1,4 +1,4 @@
-<nz-table #data nzSize="middle" [nzData]="statsDetails" [nzFrontPagination]="false">
+<nz-table #data nzSize="default" [nzData]="statsDetails" [nzFrontPagination]="false">
   <thead>
   <tr>
     <th *ngFor="let h of statsColumn">{{h}}</th>
@@ -7,7 +7,7 @@
   <tbody>
   <tr *ngFor="let s of data.data">
     <td>
-      <nz-avatar nzShape="square" nzSize="large" [nzSrc]="s.img_small" nz-tooltip [nzTooltipTitle]="s.label"></nz-avatar>
+      <nz-avatar nzShape="circle" nzSize="large" [nzSrc]="s.img_small" nz-tooltip [nzTooltipTitle]="s.label"></nz-avatar>
     </td>
     <td>{{s.stats.Matches}}</td>
     <td>{{s.stats.Kills}}</td>

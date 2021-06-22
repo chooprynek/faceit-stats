@@ -8,6 +8,7 @@ import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzSpinModule} from "ng-zorro-antd/spin";
+import {NzCardModule} from "ng-zorro-antd/card";
 
 
 
@@ -27,7 +28,8 @@ import {NzSpinModule} from "ng-zorro-antd/spin";
         NzIconModule,
         NzButtonModule,
         NzAvatarModule,
-        NzSpinModule
+        NzSpinModule,
+        NzCardModule
     ]
 })
 export class SharedModule { }

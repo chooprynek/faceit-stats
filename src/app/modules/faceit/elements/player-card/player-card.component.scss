@@ -6,7 +6,7 @@
   padding: .5rem;
 }
 
-.card-player {
+.player-card {
   display: flex;
   gap: 1rem;
 
@@ -94,7 +94,7 @@
       .other-box {
         transition: .5s;
         &:hover {
-          background-color: #384053;
+          background-color: #2d364c;
         }
 
         display: flex;
@@ -104,7 +104,7 @@
         font-weight: 500;
         font-size: 1rem;
         padding: .5rem 1rem;
-        background-color: #313848;
+        background-color: #282f42;
         border-radius: .5rem;
         .img-margin {
           margin-right: .5rem;
@@ -120,13 +120,14 @@
 
 
 @media screen and (max-width: 992px) {
-  .card-player {
+  .player-card {
     flex-direction: column;
 
     .info-box, .elo-box {
       justify-content: center;
       width: 100%;
     }
+
   }
 }
 

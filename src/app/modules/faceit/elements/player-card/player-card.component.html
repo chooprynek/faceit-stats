@@ -1,5 +1,5 @@
 <nz-card class="card-box">
-  <div class="card-player">
+  <div class="player-card">
     <div class="info-box">
       <nz-avatar nzShape="circle" [nzSrc]="player?.avatar" [nzIcon]="'user'"></nz-avatar>
       <div>
@@ -34,7 +34,7 @@
         <nz-progress [nzPercent]="progressWidth" nzStatus="active" [nzShowInfo]="false"></nz-progress>
         <div class="elo-range">
           <div *ngFor="let l of faceitLevels" class="range">
-            <div >{{ l.level }}</div>
+            <div nz-tooltip [nzTooltipTitle]="l.rank" [nzTooltipColor]="'#313848'">{{ l.level }}</div>
           </div>
         </div>
       </div>
