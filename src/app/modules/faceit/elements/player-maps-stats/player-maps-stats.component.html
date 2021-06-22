@@ -1,0 +1,24 @@
+<nz-table #data nzSize="middle" [nzData]="statsDetails" [nzFrontPagination]="false">
+  <thead>
+  <tr>
+    <th *ngFor="let h of statsColumn">{{h}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of data.data">
+    <td>
+      <nz-avatar nzShape="square" nzSize="large" [nzSrc]="s.img_small" nz-tooltip [nzTooltipTitle]="s.label"></nz-avatar>
+    </td>
+    <td>{{s.stats.Matches}}</td>
+    <td>{{s.stats.Kills}}</td>
+    <td>{{s.stats.Assists}}</td>
+    <td>{{s.stats.Deaths}}</td>
+    <td>{{s.stats.MVPs}}</td>
+    <td>{{s.stats["Average K/D Ratio"]}}</td>
+    <td>{{s.stats["Average Headshots %"]}}</td>
+    <td>{{s.stats["Triple Kills"]}}</td>
+    <td>{{s.stats["Quadro Kills"]}}</td>
+    <td>{{s.stats["Penta Kills"]}}</td>
+  </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,153 @@
+:host .ant-card-body {
+  padding: 2rem;
+}
+
+::ng-deep .ant-progress-bg {
+  padding: .5rem;
+}
+
+.card-player {
+  display: flex;
+  gap: 1rem;
+
+  .info-box {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    nz-avatar {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+      color: #fff;
+    }
+
+    ul {
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    span {
+      color: #7b849c;
+      font-weight: 500;
+    }
+
+    b {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-left: 0.25rem;
+      color: #fff;
+    }
+  }
+
+  .elo-box {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+      text-align: center;
+      color: #fff;
+    }
+    b {
+      color: #177ddc;
+    }
+    .progress-box {
+      margin-top: .75rem;
+      width: 100%;
+    }
+    .elo-range {
+      margin-top: .25rem;
+      width: 100%;
+      display: inline-block;
+
+      .range {
+        box-sizing: border-box;
+        width: 10%;
+        float: left;
+        text-align: center;
+        border-right: 2px solid #7b849c;
+        color: #7b849c;
+        font-weight: 500;
+
+        &:first-child {
+          border-left: 2px solid #7b849c;
+        }
+      }
+    }
+    .other-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem;
+      justify-content: space-between;
+
+      .other-box {
+        transition: .5s;
+        &:hover {
+          background-color: #384053;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        font-weight: 500;
+        font-size: 1rem;
+        padding: .5rem 1rem;
+        background-color: #313848;
+        border-radius: .5rem;
+        .img-margin {
+          margin-right: .5rem;
+        }
+        .social-icon {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+  .card-player {
+    flex-direction: column;
+
+    .info-box, .elo-box {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .info-box, .elo-box {
+    nz-avatar {
+      width: 8rem !important;
+      height: 8rem !important;
+    }
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .other-box {
+      flex: auto!important;
+    }
+    .fill {
+      width: 100%;
+    }
+    .half {
+      width: 48%;
+    }
+  }
+}

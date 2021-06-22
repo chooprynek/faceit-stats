@@ -1,0 +1,63 @@
+<nz-card class="card-box">
+  <div class="card-player">
+    <div class="info-box">
+      <nz-avatar nzShape="circle" [nzSrc]="player?.avatar" [nzIcon]="'user'"></nz-avatar>
+      <div>
+        <h1>{{player?.nickname}}</h1>
+        <ul>
+          <li>
+            <span>Matches:</span>
+            <b>{{playerStats?.lifetime?.Matches}}</b>
+          </li>
+          <li>
+            <span>Wins:</span>
+            <b>{{playerStats?.lifetime?.Wins}}</b>
+          </li>
+          <li>
+            <span>K/D Ratio:</span>
+            <b>{{playerStats?.lifetime["Average K/D Ratio"]}}</b>
+          </li>
+          <li>
+            <span>AVG HS%:</span>
+            <b>{{playerStats?.lifetime["Average Headshots %"]}}%</b>
+          </li>
+          <li>
+            <span>Current Win Streak:</span>
+            <b>{{playerStats?.lifetime["Current Win Streak"]}}</b>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="elo-box">
+      <h1>ELO Points: <b>{{player?.games?.csgo?.faceit_elo}}</b></h1>
+      <div class="progress-box">
+        <nz-progress [nzPercent]="progressWidth" nzStatus="active" [nzShowInfo]="false"></nz-progress>
+        <div class="elo-range">
+          <div *ngFor="let l of faceitLevels" class="range">
+            <div >{{ l.level }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="other-info">
+        <div class="other-box fill">
+          <img src="./assets/level/level-{{player?.games?.csgo?.skill_level}}.svg" class="img-margin">
+          Level
+        </div>
+        <div class="other-box fill">
+          <img src="https://www.countryflags.io/{{player?.country}}/flat/32.png" class="img-margin">
+          {{playerRanks?.country}}
+        </div>
+        <div class="other-box fill">
+          <img src="https://www.countryflags.io/{{player?.games?.csgo?.region}}/flat/32.png" class="img-margin">
+          {{playerRanks?.region}}
+        </div>
+        <a class="other-box half" href="https://steamcommunity.com/profiles/{{player?.steam_id_64}}" target="_blank">
+          <img src="./assets/other/steam.svg" class="social-icon">
+        </a>
+        <a class="other-box half" href="https://www.faceit.com/en/players/{{player?.nickname}}" target="_blank">
+          <img src="./assets/other/faceit.svg" class="social-icon">
+        </a>
+      </div>
+    </div>
+  </div>
+</nz-card>

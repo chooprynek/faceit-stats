@@ -1,0 +1,29 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#232639), to(#181f28)) !important;
+  color: #fff;
+}
+
+.ant-select-dropdown {
+  background-color: #202633;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #2c3045;
+}
+
+.ant-progress-inner {
+  background-color: #313c54;
+}
+
+.card-box {
+  margin: 1rem 0;
+  background-color: #202633;
+  border-radius: 8px;
+  border: 1px solid #415071;
+}

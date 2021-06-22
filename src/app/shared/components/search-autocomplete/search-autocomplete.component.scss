@@ -1,0 +1,32 @@
+nz-avatar {
+  margin-right: 1rem;
+}
+
+nz-input-group {
+  padding: .5rem;
+  border: 1px solid #415071;
+}
+
+button {
+  margin-top: .5rem;
+  width: 100%;
+  font-weight: 500;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.country {
+  img {
+    margin: 0 .5rem;
+  }
+}
