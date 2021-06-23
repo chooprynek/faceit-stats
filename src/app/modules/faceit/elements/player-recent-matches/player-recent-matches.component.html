@@ -1,0 +1,28 @@
+<nz-table #data nzSize="default" [nzData]="playerMatches" [nzFrontPagination]="false">
+  <thead>
+  <tr>
+    <th *ngFor="let h of matchesColumn">{{h}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of data.data">
+    <td>
+      <nz-avatar [nzText]="s.rounds[0]?.teams[0].team_stats['Team Win'] == '0' ? 'W' : 'L'"
+                 [ngClass]="s.rounds[0]?.teams[0].team_stats['Team Win'] == '0' ? 'win' : 'lose'"></nz-avatar>
+    </td>
+    <td>{{enumMaps[s.rounds[0]?.round_stats.Map]}}</td>
+    <td>{{s.rounds[0]?.round_stats.Score.replace(" / ", ":") }}</td>
+    <td>{{s.player[0]?.player_stats.Kills}}/{{s.player[0]?.player_stats.Deaths}}/{{s.player[0]?.player_stats.Assists}}</td>
+    <td>{{s.player[0]?.player_stats["K/D Ratio"] | number: ".2-2"}}</td>
+    <td>{{s.player[0]?.player_stats["K/R Ratio"] | number: ".2-2"}}</td>
+    <td>{{s.player[0]?.player_stats["Headshots %"]}}%</td>
+    <td>{{s.player[0]?.player_stats["Triple Kills"]}}</td>
+    <td>{{s.player[0]?.player_stats["Quadro Kills"]}}</td>
+    <td>{{s.player[0]?.player_stats["Penta Kills"]}}</td>
+    <td>{{s.info?.finished_at * 1000 | date: "yyyy/MM/dd HH:mm" }}</td>
+    <td>
+      <a [href]="matchUrl + s.info?.match_id" target="_blank"><img src="/assets/other/faceit.svg" alt="demo"/></a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

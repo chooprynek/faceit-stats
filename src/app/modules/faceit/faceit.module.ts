@@ -14,6 +14,7 @@ import {NzCardModule} from "ng-zorro-antd/card";
 import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzProgressModule} from "ng-zorro-antd/progress";
 import {SharedModule} from "../../shared/shared.module";
+import { PlayerRecentMatchesComponent } from './elements/player-recent-matches/player-recent-matches.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {SharedModule} from "../../shared/shared.module";
     FaceitComponent,
     PlayerMapsStatsComponent,
     PlayerCardComponent,
+    PlayerRecentMatchesComponent,
   ],
   imports: [
     CommonModule,

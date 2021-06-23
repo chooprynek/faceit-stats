@@ -5,8 +5,7 @@
                    [playerRanks]="playerRankings"
                    *ngIf="player || playerStats">
   </app-player-card>
-  <app-player-maps-stats [statsDetails]="statsDetails"
-                         *ngIf="statsDetails">
-  </app-player-maps-stats>
+  <app-player-maps-stats [statsDetails]="statsDetails" *ngIf="statsDetails"></app-player-maps-stats>
+  <app-player-recent-matches [playerMatches]="playerMatches" *ngIf="playerMatches"></app-player-recent-matches>
 </div>
 <ngx-loading [show]="loading"></ngx-loading>

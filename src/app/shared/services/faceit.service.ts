@@ -6,6 +6,9 @@ import {SearchList} from "../interfaces/seach/search-list.inteface";
 import {PlayerDetails} from "../interfaces/player/player-details.interface";
 import {PlayerStats} from "../interfaces/player/player-stats.interface";
 import {PlayerRanking} from "../interfaces/player/player-region-ranking.interface";
+import {PlayerHistory} from "../interfaces/player/player-history.interface";
+import {PlayerMatchesDetails} from "../interfaces/player/player-matches-details.interface";
+import {PlayerMatches} from "../interfaces/player/player-matches.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -32,16 +35,16 @@ export class FaceitService {
     return this.http.get<PlayerRanking>(`${environment.apiRank}${region}/players/${playerId}?country=${country}&limit=2`);
   }
 
-  getMatchHistory(playerId: string) {
-    return this.http.get(`${environment.apiPlayers}${playerId}/history?game=csgo&from=1420070400&limit=15`);
+  getMatchHistory(playerId: string | undefined): Observable<PlayerHistory> {
+    return this.http.get<PlayerHistory>(`${environment.apiPlayers}${playerId}/history?game=csgo&from=1420070400&limit=15`);
   }
 
-  getMatchInfo(matchId: string) {
-    return this.http.get(`${environment.apiMatch}${matchId}`);
+  getMatchInfo(matchId: string):Observable<PlayerMatchesDetails> {
+    return this.http.get<PlayerMatchesDetails>(`${environment.apiMatch}${matchId}`);
   }
 
-  getMatchStats(matchId: string) {
-    return this.http.get(`${environment.apiMatch}${matchId}/stats`);
+  getMatchStats(matchId: string): Observable<PlayerMatches> {
+    return this.http.get<PlayerMatches>(`${environment.apiMatch}${matchId}/stats`);
   }
 
   getSearchedPlayers(nickname: string): Observable<SearchList> {
