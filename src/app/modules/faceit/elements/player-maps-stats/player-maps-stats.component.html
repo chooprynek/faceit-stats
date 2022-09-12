@@ -1,4 +1,4 @@
-<nz-table #data nzSize="default" [nzData]="statsDetails" [nzFrontPagination]="false">
+<nz-table #data nzSize="small" [nzScroll]="{x: '576px'}" [nzData]="statsDetails" [nzFrontPagination]="false" [nzLoading]="statsDetails === null">
   <thead>
   <tr>
     <th *ngFor="let h of statsColumn">{{h}}</th>

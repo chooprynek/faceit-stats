@@ -1,29 +1,36 @@
 .ant-table {
   background: transparent;
 }
+
 .ant-table-tbody > tr.ant-table-row:hover > td {
-  background: unset;
+  background: #1b212c;
 }
+
 .ant-table-container {
   background-color: #202633;
   border-radius: 8px;
   border: 1px solid #415071;
 }
+
 .ant-table-thead > tr > th {
   background-color: #282f42;
   text-align: center;
   border-bottom: 1px solid #415071;
 }
+
 .ant-table-tbody > tr > td {
   border-bottom: 1px solid #415071;
   text-align: center;
 }
+
 .ant-table-container table > thead > tr:first-child th:last-child {
   border-top-right-radius: 8px;
 }
+
 .ant-table-container table > thead > tr:first-child th:first-child {
   border-top-left-radius: 8px;
 }
+
 tr:last-child {
   td {
     border-bottom: 0;

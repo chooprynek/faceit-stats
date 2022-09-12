@@ -1,9 +1,9 @@
 import {PlayerMatchesDetails} from "./player-matches-details.interface";
 
 export interface PlayerMatches {
-  rounds: Round[];
-  info?: PlayerMatchesDetails;
-  player?: Player[];
+  rounds: Round[] | any;
+  info: PlayerMatchesDetails;
+  player: Player[] | any;
 }
 
 export interface Round {

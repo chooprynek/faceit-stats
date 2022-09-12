@@ -114,5 +114,8 @@
       }
     }
   },
-  "defaultProject": "faceit-zorro"
+  "defaultProject": "faceit-zorro",
+  "cli": {
+    "analytics": false
+  }
 }

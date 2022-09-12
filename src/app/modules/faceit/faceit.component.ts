@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {PlayerDetails} from "../../shared/interfaces/player/player-details.interface";
 import {MapStats, PlayerStats} from "../../shared/interfaces/player/player-stats.interface";
-import {PlayerMatches} from "../../shared/interfaces/player/player-matches.interface";
+import {Player, PlayerMatches, Round} from "../../shared/interfaces/player/player-matches.interface";
 
 @Component({
   selector: 'app-faceit',
@@ -42,7 +42,7 @@ export class FaceitComponent implements OnInit {
     })
   }
 
-  getPlayerStats(playerId: string | undefined): void {
+  getPlayerStats(playerId: string): void {
     this.loading = true;
     this.faceitService.getPlayerStats(playerId).subscribe(r => {
       this.playerStats = r;
@@ -62,10 +62,10 @@ export class FaceitComponent implements OnInit {
           });
           this.playerMatches = matchStats;
           this.playerMatches.map((stat) => {
-            return stat.rounds.map((round) => {
+            return stat.rounds.map((round: Round) => {
               return [...round.teams[0].players, ...round.teams[1].players];
-            }).map((roundPlayers) =>
-              roundPlayers.find((player) => player?.player_id === playerId)
+            }).map((roundPlayers: Round[]) =>
+              roundPlayers.find((player: any) => player?.player_id === playerId)
             );
           }).forEach((player: any, index: any) => {
             this.playerMatches![index].player = player;

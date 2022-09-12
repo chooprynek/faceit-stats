@@ -1,11 +1,12 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "../faceit-stats/src/app/shared/styles/table.scss";
+
 * {
   font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background: -webkit-gradient(linear, left top, left bottom, from(#232639), to(#181f28)) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1e2033), to(#181f28)) fixed;
   color: #fff;
 }
 

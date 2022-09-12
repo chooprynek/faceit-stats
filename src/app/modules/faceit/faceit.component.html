@@ -1,10 +1,6 @@
 <div class="container">
   <app-search-autocomplete></app-search-autocomplete>
-  <app-player-card [player]="player"
-                   [playerStats]="playerStats"
-                   [playerRanks]="playerRankings"
-                   *ngIf="player || playerStats">
-  </app-player-card>
+  <app-player-card [player]="player" [playerStats]="playerStats" [playerRanks]="playerRankings" *ngIf="player || playerStats"></app-player-card>
   <app-player-maps-stats [statsDetails]="statsDetails" *ngIf="statsDetails"></app-player-maps-stats>
   <app-player-recent-matches [playerMatches]="playerMatches" *ngIf="playerMatches"></app-player-recent-matches>
 </div>

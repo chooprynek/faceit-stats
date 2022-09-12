@@ -16,9 +16,16 @@ export class PlayerRecentMatchesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.playerMatches);
+    this.playerMatches?.forEach((p: PlayerMatches) => {
+      p.player = p.player[0];
+      p.rounds = p.rounds[0];
+      console.log(p);
+    })
   }
 
+  teamWinResult(data: any): boolean {
+    return data.rounds?.teams[0].team_stats['Team Win'] === '0'
+  }
 }
 
 export enum mapsEnum {
