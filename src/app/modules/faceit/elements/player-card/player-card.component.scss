@@ -11,20 +11,27 @@
   gap: 1rem;
 
   .info-box {
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    align-items: center;
+    gap: 2rem;
 
-    nz-avatar {
-      width: 10rem;
-      height: 10rem;
+    .avatar {
+      img {
+        width: 180px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 4px;
+        border: 1px solid #415071;
+      }
+
     }
 
     h1 {
-      font-size: 2rem;
-      margin: 0;
+      font-size: 1.75rem;
       color: #fff;
+      margin-bottom: .5rem;
     }
 
     ul {
@@ -48,12 +55,13 @@
   }
 
   .elo-box {
-    width: 60%;
+    width: 55%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.75rem;
       margin: 0;
       text-align: center;
       color: #fff;
@@ -108,7 +116,7 @@
         flex: 1;
         font-weight: 500;
         font-size: 1rem;
-        padding: .5rem 1rem;
+        padding: .25rem .5rem;
         background-color: #282f42;
         border-radius: .5rem;
 

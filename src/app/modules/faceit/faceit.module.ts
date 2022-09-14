@@ -15,6 +15,9 @@ import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzProgressModule} from "ng-zorro-antd/progress";
 import {SharedModule} from "../../shared/shared.module";
 import { PlayerRecentMatchesComponent } from './elements/player-recent-matches/player-recent-matches.component';
+import {NzButtonModule} from "ng-zorro-antd/button";
+import {NzIconModule} from "ng-zorro-antd/icon";
+import {NzSpinModule} from "ng-zorro-antd/spin";
 
 
 @NgModule({
@@ -24,19 +27,22 @@ import { PlayerRecentMatchesComponent } from './elements/player-recent-matches/p
     PlayerCardComponent,
     PlayerRecentMatchesComponent,
   ],
-  imports: [
-    CommonModule,
-    FaceitRoutingModule,
-    NgxLoadingModule,
-    NzTableModule,
-    NzDividerModule,
-    NzToolTipModule,
-    NzAvatarModule,
-    NzLayoutModule,
-    NzCardModule,
-    NzGridModule,
-    NzProgressModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        FaceitRoutingModule,
+        NgxLoadingModule,
+        NzTableModule,
+        NzDividerModule,
+        NzToolTipModule,
+        NzAvatarModule,
+        NzLayoutModule,
+        NzCardModule,
+        NzGridModule,
+        NzProgressModule,
+        SharedModule,
+        NzButtonModule,
+        NzIconModule,
+        NzSpinModule
+    ]
 })
 export class FaceitModule { }

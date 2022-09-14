@@ -1,32 +1,24 @@
-<nz-card class="card-box">
-  <nz-input-group [nzSuffix]="suffixIconSearch">
-    <input nzSize="default" nz-input [formControl]="nickControl" [nzAutocomplete]="auto"/>
-  </nz-input-group>
+<nz-input-group [nzSuffix]="suffixIconSearch" nzSize="small">
+  <input nzSize="small" nz-input [formControl]="nickControl" [nzAutocomplete]="auto"/>
+</nz-input-group>
 
-  <ng-template #suffixIconSearch>
-    <i nz-icon nzType="search" class="search"></i>
-  </ng-template>
+<ng-template #suffixIconSearch>
+  <i nz-icon nzType="search" class="search"></i>
+</ng-template>
 
-
-  <nz-autocomplete #auto>
-    <nz-spin nzSize="large" [nzSpinning]="dataLoadingIndicator">
-      <nz-auto-option *ngFor="let p of playersList" [nzValue]="p.nickname" (click)="redirect(p.nickname)">
-        <div class="details">
-          <div class="player">
-            <nz-avatar class="avatar" nzSize="large" [nzSrc]="p.avatar" nzIcon="user"></nz-avatar>
-            {{p.nickname}}
-          </div>
-          <div class="country">
-            <img src="./assets/level/level-{{p.games[0].skill_level}}.svg" alt="">
-            <img src="https://www.countryflags.io/{{p.country}}/flat/32.png" alt="">
-          </div>
+<nz-autocomplete #auto>
+  <nz-spin nzSize="large" [nzSpinning]="dataLoadingIndicator">
+    <nz-auto-option *ngFor="let p of playersList" [nzValue]="p.nickname" (click)="redirect(p.nickname)">
+      <div class="details">
+        <div class="player">
+          <nz-avatar class="avatar" nzSize="large" [nzSrc]="p.avatar" nzIcon="user"></nz-avatar>
+          {{p.nickname}}
         </div>
-      </nz-auto-option>
-    </nz-spin>
-  </nz-autocomplete>
-
-
-  <button nz-button nzType="primary" (click)="redirect(nickControl.value)" [disabled]="!nickControl.value">
-    Search
-  </button>
-</nz-card>
+        <div class="country">
+          <img src="./assets/level/level-{{p.games[0].skill_level}}.svg" alt="">
+          <img src="https://countryflagsapi.com/svg/{{p.country}}" alt="">
+        </div>
+      </div>
+    </nz-auto-option>
+  </nz-spin>
+</nz-autocomplete>

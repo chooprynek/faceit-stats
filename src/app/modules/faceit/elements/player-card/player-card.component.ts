@@ -14,6 +14,7 @@ export class PlayerCardComponent implements OnChanges {
   @Input() playerRanks?: any;
 
   progressWidth = 0;
+
   faceitLevels = [
     {level: 1, rank: '1 - 800'},
     {level: 2, rank: '801 - 950'},

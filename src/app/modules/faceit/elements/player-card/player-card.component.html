@@ -1,7 +1,9 @@
 <nz-card class="card-box">
   <div class="player-card">
     <div class="info-box">
-      <nz-avatar nzShape="circle" [nzSrc]="player?.avatar" [nzIcon]="'user'"></nz-avatar>
+      <div class="avatar">
+        <img [src]="player?.avatar" [alt]="player?.nickname">
+      </div>
       <div>
         <h1>{{player?.nickname}}</h1>
         <ul>
@@ -31,7 +33,7 @@
     <div class="elo-box">
       <h1>ELO Points: <b>{{player?.games?.csgo?.faceit_elo}}</b></h1>
       <div class="progress-box">
-        <nz-progress [nzPercent]="progressWidth" nzStatus="active" [nzShowInfo]="false"></nz-progress>
+        <nz-progress nzType="line" nzSize="small" [nzPercent]="progressWidth" nzStatus="active" [nzShowInfo]="false"></nz-progress>
         <div class="elo-range">
           <div *ngFor="let l of faceitLevels" class="range">
             <div nz-tooltip [nzTooltipTitle]="l.rank" [nzTooltipColor]="'#313848'">{{ l.level }}</div>
@@ -43,11 +45,11 @@
           <img src="./assets/level/level-{{player?.games?.csgo?.skill_level}}.svg" class="img-margin">
           Level
         </div>
-        <div class="other-box fill">
+        <div class="other-box half">
           <img src="https://countryflagsapi.com/svg/{{player?.country}}" class="img-margin flag">
           {{playerRanks?.country}}
         </div>
-        <div class="other-box fill">
+        <div class="other-box half">
           <img src="https://countryflagsapi.com/svg/{{player?.games?.csgo?.region}}" class="img-margin flag">
           {{playerRanks?.region}}
         </div>

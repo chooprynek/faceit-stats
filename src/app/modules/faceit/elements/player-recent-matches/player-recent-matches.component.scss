@@ -18,3 +18,14 @@ img {
     transform: scale(1.2);
   }
 }
+
+:host ::ng-deep .ant-table-footer {
+  border: 1px solid #415071;
+  background: #282f42;
+  margin-top: -1px;
+}
+
+.load-btn {
+  width: 100% !important;
+}
+

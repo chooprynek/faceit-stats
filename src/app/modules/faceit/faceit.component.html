@@ -1,7 +1,15 @@
 <div class="container">
   <app-search-autocomplete></app-search-autocomplete>
-  <app-player-card [player]="player" [playerStats]="playerStats" [playerRanks]="playerRankings" *ngIf="player || playerStats"></app-player-card>
-  <app-player-maps-stats [statsDetails]="statsDetails" *ngIf="statsDetails"></app-player-maps-stats>
+  <nz-spin nzSize="large" [nzSpinning]="playerData">
+    <app-player-card [player]="player"
+                     [playerStats]="playerStats"
+                     [playerRanks]="playerRankings">
+    </app-player-card>
+  </nz-spin>
+  <nz-spin nzSize="large" [nzSpinning]="playerMaps || playerData">
+    <app-player-maps-stats [statsDetails]="statsDetails"></app-player-maps-stats>
+  </nz-spin>
+
   <app-player-recent-matches [playerMatches]="playerMatches" *ngIf="playerMatches"></app-player-recent-matches>
 </div>
-<ngx-loading [show]="loading"></ngx-loading>
+

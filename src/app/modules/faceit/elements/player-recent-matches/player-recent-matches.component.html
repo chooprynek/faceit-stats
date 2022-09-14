@@ -1,7 +1,7 @@
-<nz-table #data nzSize="small" [nzScroll]="{x: '576px'}" [nzData]="playerMatches" [nzFrontPagination]="false">
+<nz-table *ngIf="playerMatches" #data nzSize="small" [nzScroll]="{x: '576px'}" [nzData]="playerMatches" [nzFrontPagination]="false" [nzFooter]="loadMore">
   <thead>
   <tr>
-    <th *ngFor="let col of matchesColumn; let i = index" [nzWidth]="i === 10 ? '140px' : ''">{{col}}</th>
+    <th *ngFor="let col of matchesColumn; let i = index" [nzWidth]="i === 10 || i === 1 ? '140px' : ''">{{col}}</th>
   </tr>
   </thead>
   <tbody>
@@ -47,3 +47,7 @@
   </tr>
   </tbody>
 </nz-table>
+
+<ng-template #loadMore>
+    <button nzType="primary" nz-button class="load-btn">Load more</button>
+</ng-template>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MapStats} from "../../../../shared/interfaces/player/player-stats.interface";
 
 
@@ -7,15 +7,8 @@ import {MapStats} from "../../../../shared/interfaces/player/player-stats.interf
   templateUrl: './player-maps-stats.component.html',
   styleUrls: ['./player-maps-stats.component.scss']
 })
-export class PlayerMapsStatsComponent implements OnInit {
+export class PlayerMapsStatsComponent {
 
   @Input() statsDetails?: MapStats[] = [];
   statsColumn = ['Map', 'Matches', 'Kills', 'Assists', 'Deaths', 'MVPs', 'AVG K/D', 'AVG HS%', '3K', '4K', '5K'];
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-
-
 }

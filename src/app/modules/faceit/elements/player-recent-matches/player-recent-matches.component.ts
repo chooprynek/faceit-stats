@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PlayerMatches} from "../../../../shared/interfaces/player/player-matches.interface";
+import {mapsEnum} from "../../../../shared/enums/maps-enum";
 
 @Component({
   selector: 'app-player-recent-matches',
@@ -16,10 +17,9 @@ export class PlayerRecentMatchesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.playerMatches?.forEach((p: PlayerMatches) => {
+    this.playerMatches?.filter(p => p.player !== undefined).forEach((p: PlayerMatches) => {
       p.player = p.player[0];
       p.rounds = p.rounds[0];
-      console.log(p);
     })
   }
 
@@ -28,15 +28,4 @@ export class PlayerRecentMatchesComponent implements OnInit {
   }
 }
 
-export enum mapsEnum {
-  de_dust2 = 'Dust 2',
-  de_inferno = 'Inferno',
-  de_cache = 'Cache',
-  de_mirage = 'Mirage',
-  de_overpass = 'Overpass',
-  de_train = 'Train',
-  de_nuke = 'Nuke',
-  de_cbble = 'Cobblestone',
-  de_vertigo = 'Vertigo',
-  de_season = 'Season'
-}
+

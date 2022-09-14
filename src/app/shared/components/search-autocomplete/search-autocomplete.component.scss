@@ -3,6 +3,11 @@ nz-avatar {
 }
 
 nz-input-group {
+  margin-top: 1rem;
+  background: #202633;
+}
+
+nz-input-group {
   padding: .5rem;
   border: 1px solid #415071;
 }
@@ -27,6 +32,10 @@ button {
 
 .country {
   img {
+    width: 1.75rem;
+    height: auto;
+    border-radius: .25rem;
+    object-fit: contain;
     margin: 0 .5rem;
   }
 }

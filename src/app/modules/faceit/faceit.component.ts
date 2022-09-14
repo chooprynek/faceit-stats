@@ -4,7 +4,10 @@ import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {PlayerDetails} from "../../shared/interfaces/player/player-details.interface";
 import {MapStats, PlayerStats} from "../../shared/interfaces/player/player-stats.interface";
-import {Player, PlayerMatches, Round} from "../../shared/interfaces/player/player-matches.interface";
+import {PlayerMatches, Round} from "../../shared/interfaces/player/player-matches.interface";
+import {async, lastValueFrom} from "rxjs";
+import {Item} from "../../shared/interfaces/player/player-history.interface";
+import {PlayerMatchesDetails} from "../../shared/interfaces/player/player-matches-details.interface";
 
 @Component({
   selector: 'app-faceit',
@@ -13,53 +16,67 @@ import {Player, PlayerMatches, Round} from "../../shared/interfaces/player/playe
 })
 export class FaceitComponent implements OnInit {
 
-  loading = false;
+  playerData = false;
+  playerMaps = false;
+  playerHistory = false;
+
   player?: PlayerDetails;
   statsDetails?: MapStats[] = [];
   playerStats?: PlayerStats;
   playerMatches?: PlayerMatches[];
   playerRankings = {country: 0, region: 0};
 
-  constructor(private faceitService: FaceitService, private route: ActivatedRoute, private webTitle: Title) {
+  constructor(private faceit: FaceitService,
+              private route: ActivatedRoute,
+              private webTitle: Title) {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(r => {
-      const nickname = r.get('nickname');
-      this.webTitle.setTitle(`Statystyki gracza - ${nickname}`);
-      this.getPlayerDetails(nickname);
+    this.route.paramMap.subscribe({
+      next: (r: any) => {
+        const nickname = r.get('nickname') ?? '';
+        this.webTitle.setTitle(`Statystyki gracza - ${nickname}`);
+        this.getPlayerDetails(nickname);
+      }
     });
   }
 
-  getPlayerDetails(nickname?: string | null): void {
-    this.loading = true;
-    this.faceitService.getPlayer(nickname).subscribe(r => {
-      this.player = r;
-      this.getPlayerStats(r.player_id);
-      this.getPlayerRankings(r.player_id, r.games.csgo.region, r.country);
-      this.getMatchHistory(r.player_id);
-      this.loading = false;
-    })
+  getPlayerDetails(nickname: string): void {
+    this.playerData = true;
+    this.faceit.getPlayer(nickname).subscribe({
+      next: (r: any) => {
+        this.player = r;
+        this.getPlayerStats(r.player_id);
+        this.getPlayerRankings(r.player_id, r.games.csgo.region, r.country);
+        this.getMatchHistory(r.player_id);
+      },
+      complete: () => {
+        this.playerData = false;
+      }
+    });
   }
 
   getPlayerStats(playerId: string): void {
-    this.loading = true;
-    this.faceitService.getPlayerStats(playerId).subscribe(r => {
-      this.playerStats = r;
-      this.statsDetails = r.segments.filter(r => r.mode === "5v5");
-      this.loading = false;
+    this.playerMaps = true;
+    this.faceit.getPlayerStats(playerId).subscribe({
+      next: (r: any) => {
+        this.playerStats = r;
+        this.statsDetails = r.segments.filter((r: any) => r.mode === "5v5");
+      },
+      complete: () => {
+        this.playerMaps = false;
+      }
     })
   }
 
   getMatchHistory(playerId: string | undefined) {
-    this.loading = true;
-    this.faceitService.getMatchHistory(playerId).subscribe(r => {
-      Promise.allSettled(r.items.map((match) =>
-        this.faceitService.getMatchStats(match.match_id).toPromise())).then((stats) => {
-          const matchStats = stats.filter((promiseResult) => promiseResult.status === 'fulfilled').map((pr: any) => pr.value);
-          matchStats.forEach((stat) => {
-            this.faceitService.getMatchInfo(stat.rounds[0].match_id).subscribe((info) => (stat.info = info));
-          });
+    this.playerHistory = true;
+    this.faceit.getMatchHistory(playerId).subscribe({
+      next: (r: any) => {
+        Promise.allSettled(r.items.map((match: Item) =>
+          lastValueFrom(this.faceit.getMatchStats(match.match_id)))).then((stats) => {
+          const matchStats = stats.filter((lv) => lv.status === 'fulfilled').map((pr: any) => pr.value);
+          matchStats.forEach((stat) => this.faceit.getMatchInfo(stat.rounds[0].match_id).subscribe((info: PlayerMatchesDetails) => (stat.info = info)));
           this.playerMatches = matchStats;
           this.playerMatches.map((stat) => {
             return stat.rounds.map((round: Round) => {
@@ -70,24 +87,25 @@ export class FaceitComponent implements OnInit {
           }).forEach((player: any, index: any) => {
             this.playerMatches![index].player = player;
           });
-      });
-      this.loading = false;
-    });
+        });
+      },
+      complete: () => {
+        this.playerHistory = false;
+      }
+    })
   }
 
-  getPlayerRankings(playerId: string | undefined, region: string | undefined, country: string | undefined): void {
-    this.loading = true;
-    this.faceitService.getRegionRank(playerId, region).subscribe(r => {
-      r.items.filter(p => p.player_id === playerId).forEach(e => {
-        this.playerRankings.region = e.position;
-      });
-      this.loading = false;
+  getPlayerRankings(playerId?: string, region?: string, country?: string): void {
+    this.faceit.getRegionRank(playerId, region).subscribe({
+      next: (r: any) => {
+        r.items.filter((p: any) => p.player_id === playerId).forEach((e: any) => this.playerRankings.region = e.position);
+      }
     });
-    this.faceitService.getCountryRank(playerId, region, country).subscribe(r => {
-      r.items.filter(p => p.player_id === playerId).forEach(e => {
-        this.playerRankings.country = e.position;
-      });
-      this.loading = false;
+
+    this.faceit.getCountryRank(playerId, region, country).subscribe({
+      next: (r: any) => {
+        r.items.filter((p: any) => p.player_id === playerId).forEach((e: any) => this.playerRankings.country = e.position);
+      }
     });
   }
 }

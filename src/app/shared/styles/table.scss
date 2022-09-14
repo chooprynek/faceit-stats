@@ -1,3 +1,21 @@
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #282f42;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #177ddc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1367b6;
+}
+
 .ant-table {
   background: transparent;
 }
@@ -8,7 +26,6 @@
 
 .ant-table-container {
   background-color: #202633;
-  border-radius: 8px;
   border: 1px solid #415071;
 }
 
@@ -24,11 +41,11 @@
 }
 
 .ant-table-container table > thead > tr:first-child th:last-child {
-  border-top-right-radius: 8px;
+  border-top-right-radius: 0;
 }
 
 .ant-table-container table > thead > tr:first-child th:first-child {
-  border-top-left-radius: 8px;
+  border-top-left-radius: 0;
 }
 
 tr:last-child {

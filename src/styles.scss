@@ -3,6 +3,7 @@
 
 * {
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,9 +23,12 @@ body {
   background-color: #282f42;
 }
 
+.ant-card-body {
+  padding: 1rem;
+}
+
 .card-box {
   margin: 1rem 0;
   background-color: #202633;
-  border-radius: 8px;
   border: 1px solid #415071;
 }

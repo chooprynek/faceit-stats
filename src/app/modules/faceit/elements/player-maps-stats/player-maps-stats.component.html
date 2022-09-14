@@ -1,4 +1,4 @@
-<nz-table #data nzSize="small" [nzScroll]="{x: '576px'}" [nzData]="statsDetails" [nzFrontPagination]="false" [nzLoading]="statsDetails === null">
+<nz-table #data nzSize="small" [nzScroll]="{x: '576px'}" [nzData]="statsDetails" [nzFrontPagination]="false" [nzNoResult]="null">
   <thead>
   <tr>
     <th *ngFor="let h of statsColumn">{{h}}</th>
@@ -14,7 +14,7 @@
     <td>{{s.stats.Assists}}</td>
     <td>{{s.stats.Deaths}}</td>
     <td>{{s.stats.MVPs}}</td>
-    <td>{{s.stats["Average K/D Ratio"]}}</td>
+    <td>{{s.stats["Average K/D Ratio"] | number: '1.2'}}</td>
     <td>{{s.stats["Average Headshots %"]}}</td>
     <td>{{s.stats["Triple Kills"]}}</td>
     <td>{{s.stats["Quadro Kills"]}}</td>
