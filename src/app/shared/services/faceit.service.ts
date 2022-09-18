@@ -37,7 +37,7 @@ export class FaceitService {
   }
 
   getMatchHistory(playerId?: string): Observable<PlayerHistory> {
-    return this.http.get<PlayerHistory>(`${this.apiUrl}players/${playerId}/history?game=csgo&from=1420070400&limit=15`);
+    return this.http.get<PlayerHistory>(`${this.apiUrl}players/${playerId}/history?game=csgo&from=1420070400&limit=20`);
   }
 
   getMatchInfo(matchId: string):Observable<PlayerMatchesDetails> {

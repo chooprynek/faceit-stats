@@ -26,6 +26,8 @@ export class FaceitComponent implements OnInit {
   playerMatches?: PlayerMatches[];
   playerRankings = {country: 0, region: 0};
 
+  historyMatchesCount: number = 15;
+
   constructor(private faceit: FaceitService,
               private route: ActivatedRoute,
               private webTitle: Title) {
@@ -69,7 +71,7 @@ export class FaceitComponent implements OnInit {
     })
   }
 
-  getMatchHistory(playerId: string | undefined) {
+  getMatchHistory(playerId?: string) {
     this.playerHistory = true;
     this.faceit.getMatchHistory(playerId).subscribe({
       next: (r: any) => {

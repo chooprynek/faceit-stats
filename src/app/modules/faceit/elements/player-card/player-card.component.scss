@@ -149,31 +149,34 @@
       justify-content: center;
       width: 100%;
     }
-
   }
 }
 
 @media screen and (max-width: 576px) {
-  .info-box, .elo-box {
-    nz-avatar {
-      width: 8rem !important;
-      height: 8rem !important;
-    }
-
+  .player-card {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+
+    .info-box, .elo-box {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  .avatar {
+    img {
+      width: 150px !important;
+    }
+  }
+
+  .progress-box {
+    margin-top: .25rem;
+  }
+  .info-box, .elo-box {
+    flex-direction: row;
+    text-align: left;
 
     .other-box {
       flex: auto !important;
-    }
-
-    .fill {
-      width: 100%;
-    }
-
-    .half {
-      width: 48%;
     }
   }
 }

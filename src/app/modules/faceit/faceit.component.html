@@ -10,6 +10,6 @@
     <app-player-maps-stats [statsDetails]="statsDetails"></app-player-maps-stats>
   </nz-spin>
 
-  <app-player-recent-matches [playerMatches]="playerMatches" *ngIf="playerMatches"></app-player-recent-matches>
+  <app-player-recent-matches [playerMatches]="playerMatches" *ngIf="playerMatches" (historyLimit)="$event ? getMatchHistory(player.player_id, historyMatchesCount + 15) : false"></app-player-recent-matches>
 </div>
 

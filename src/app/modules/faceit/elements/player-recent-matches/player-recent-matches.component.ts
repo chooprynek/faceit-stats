@@ -14,7 +14,9 @@ export class PlayerRecentMatchesComponent implements OnInit {
   matchesColumn = ['Result', 'Map', 'Score', 'K/A/D', 'K/D Ratio', 'K/R Ratio', 'HS%', '3K', '4K', '5K', 'Date', 'Demo'];
   matchUrl = 'https://www.faceit.com/en/csgo/room/';
   enumMaps = mapsEnum;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.playerMatches?.filter(p => p.player !== undefined).forEach((p: PlayerMatches) => {
